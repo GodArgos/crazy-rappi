@@ -58,6 +58,8 @@ public class TwoWheelVehicleController : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] private Rigidbody centerRB;
     [SerializeField] private Rigidbody vehicleBody;
+    [SerializeField] private GameObject frontTire;
+    [SerializeField] private GameObject backTire;
     [SerializeField] private LayerMask drivableSurfice;
 
     [Header("Handle Logic")]
@@ -65,8 +67,19 @@ public class TwoWheelVehicleController : MonoBehaviour
     [SerializeField] private float handleRotVal = 30f;
     [SerializeField] private float handleRotSpeed = 0.15f;
 
+    [Header("Skid Logic")]
+    [SerializeField] private TrailRenderer skidMarks;
+    [SerializeField] private float skidWidth = 0.062f;
+    [SerializeField] private float minSkidVelocity = 10f;
+
+    [Header("Drift Logic")]
+    [SerializeField] private float norDrag = 2f;
+    [SerializeField] private float driftDrag = 0.5f;
+
     [Header("Other Variables")]
     [SerializeField] private float zTiltAngle = 45f;
+    [SerializeField] private float tyreRotSpeed = 10000f;
+    public AnimationCurve turningCurve;
 
     // UnSerialized Variables or Hidden Variables
     [HideInInspector] public Vector3 velocity;
@@ -90,6 +103,8 @@ public class TwoWheelVehicleController : MonoBehaviour
         vehicleBody.transform.parent = null;
 
         m_rayLength = centerRB.GetComponent<SphereCollider>().radius + 0.2f;
+        skidMarks.startWidth = skidWidth;
+        skidMarks.emitting = false;
     }
 
     private void Update()
@@ -105,6 +120,8 @@ public class TwoWheelVehicleController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
+        SkidMarks();
+        RotateTires();
     }
 
     private void Movement()
@@ -114,8 +131,8 @@ public class TwoWheelVehicleController : MonoBehaviour
             if (!brakeState)
             {
                 Acceleration();
-                Rotation();
             }
+            Rotation();
             Brake();
         }
         else
@@ -132,7 +149,7 @@ public class TwoWheelVehicleController : MonoBehaviour
 
     private void Rotation()
     {
-        transform.Rotate(0, steerInput * moveInput * m_steerStrength * Time.fixedDeltaTime, 0, Space.World);
+        transform.Rotate(0, steerInput * moveInput * turningCurve.Evaluate(Mathf.Abs(currentVelocityOffset)) * m_steerStrength * Time.fixedDeltaTime, 0, Space.World);
 
         vehicleHandle.transform.localRotation = Quaternion.Slerp(vehicleHandle.transform.localRotation,
                                                                  Quaternion.Euler(vehicleHandle.transform.localRotation.eulerAngles.x, handleRotVal * steerInput, vehicleHandle.transform.localRotation.eulerAngles.z),
@@ -161,12 +178,20 @@ public class TwoWheelVehicleController : MonoBehaviour
         if (brakeState)
         {
             centerRB.velocity *= m_brakingFactor / 10;
+            //centerRB.drag = driftDrag;
+        }
+        else
+        {
+            //centerRB.drag = norDrag;
         }
     }
 
     private bool Grounded()
     {
-        if (Physics.Raycast(centerRB.position, Vector3.down, out hit, m_rayLength, drivableSurfice))
+        float radius = m_rayLength - 0.02f;
+        Vector3 origin = centerRB.transform.position + radius * Vector3.up;
+
+        if (Physics.SphereCast(origin, radius + 0.02f, -transform.up, out hit, m_rayLength, drivableSurfice))
         {
             return true;
         }
@@ -179,6 +204,24 @@ public class TwoWheelVehicleController : MonoBehaviour
     private void Gravity()
     {
         centerRB.AddForce(m_gravity * Vector3.down, ForceMode.Acceleration);
+    }
+
+    private void SkidMarks()
+    {
+        if (Grounded() && Mathf.Abs(velocity.x) > minSkidVelocity || brakeState)
+        {
+            skidMarks.emitting = true;
+        }
+        else
+        {
+            skidMarks.emitting = false;
+        }
+    }
+
+    private void RotateTires()
+    {
+        frontTire.transform.Rotate(Vector3.right, Time.deltaTime * tyreRotSpeed * currentVelocityOffset);
+        backTire.transform.Rotate(Vector3.right, Time.deltaTime * tyreRotSpeed * currentVelocityOffset);
     }
 
     #region Input System Methods

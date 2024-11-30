@@ -178,11 +178,11 @@ public class TwoWheelVehicleController : MonoBehaviour
         if (brakeState)
         {
             centerRB.velocity *= m_brakingFactor / 10;
-            //centerRB.drag = driftDrag;
+            centerRB.drag = driftDrag;
         }
         else
         {
-            //centerRB.drag = norDrag;
+            centerRB.drag = norDrag;
         }
     }
 
@@ -208,7 +208,7 @@ public class TwoWheelVehicleController : MonoBehaviour
 
     private void SkidMarks()
     {
-        if (Grounded() && Mathf.Abs(velocity.x) > minSkidVelocity || brakeState)
+        if (Grounded() && (Mathf.Abs(velocity.x) > minSkidVelocity || brakeState))
         {
             skidMarks.emitting = true;
         }

@@ -552,8 +552,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 802288015}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16710396, y: -0.0000000034682264, z: 5.878195e-10, w: 0.9859393}
-  m_LocalPosition: {x: -6.43, y: 3.0000305, z: -17.720001}
+  m_LocalRotation: {x: 0.057873935, y: -0.00000002998391, z: 0.0000000017382001, w: 0.9983239}
+  m_LocalPosition: {x: -6.43, y: 2.0000305, z: -17.720001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -693,7 +693,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.13052624, y: 0, z: 0, w: 0.9914449}
   m_LocalPosition: {x: -6.6545, y: 0.31307423, z: 12.25476}
-  m_LocalScale: {x: 5, y: 1, z: 6.1513}
+  m_LocalScale: {x: 5, y: 1, z: 75.6674}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -745,11 +745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70a6e1dc843547b4ab12e03ca117b0a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxSpeed: 27.89
-  m_acceleration: 1
-  m_steerStrength: 100
+  m_maxSpeed: 50
+  m_acceleration: 3
+  m_steerStrength: 85
   m_brakingFactor: 9
-  m_rayLength: 0
+  m_rayLength: 0.7
   m_gravity: 25
   centerRB: {fileID: 1485453389}
   vehicleBody: {fileID: 1760850116}
@@ -763,10 +763,10 @@ MonoBehaviour:
   handleRotSpeed: 0.15
   skidMarks: {fileID: 267974386}
   skidWidth: 0.062
-  minSkidVelocity: 2
-  norDrag: 2
+  minSkidVelocity: 10
+  norDrag: 1.5
   driftDrag: 0.5
-  zTiltAngle: 45
+  zTiltAngle: 60
   tyreRotSpeed: 1000
   turningCurve:
     serializedVersion: 2
@@ -792,7 +792,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  velocity: {x: 0, y: 0, z: 0}
+  velocity: {x: 3.7891663e-14, y: 0.000000044703484, z: 3.882318e-14}
 --- !u!1 &1327052049
 GameObject:
   m_ObjectHideFlags: 3
@@ -840,7 +840,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 2.5, z: -4.5}
+  m_FollowOffset: {x: 0, y: 1.5, z: -4.5}
   m_XDamping: 0
   m_YDamping: 0
   m_ZDamping: 0
@@ -1385,8 +1385,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2023580718}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16710396, y: -0.0000000034682266, z: 5.8781957e-10, w: 0.9859393}
-  m_LocalPosition: {x: -6.43, y: 3.0000305, z: -17.720001}
+  m_LocalRotation: {x: 0.05787394, y: -0.000000029983912, z: 0.0000000017382004, w: 0.9983239}
+  m_LocalPosition: {x: -6.43, y: 2.0000305, z: -17.720001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

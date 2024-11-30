@@ -60,6 +60,7 @@ public class TwoWheelVehicleController : MonoBehaviour
     [SerializeField] private Rigidbody vehicleBody;
     [SerializeField] private GameObject frontTire;
     [SerializeField] private GameObject backTire;
+    [SerializeField] private List<GameObject> extraMovingParts;
     [SerializeField] private LayerMask drivableSurfice;
 
     [Header("Handle Logic")]
@@ -122,6 +123,7 @@ public class TwoWheelVehicleController : MonoBehaviour
         Movement();
         SkidMarks();
         RotateTires();
+        RotateExtraParts();
     }
 
     private void Movement()
@@ -222,6 +224,14 @@ public class TwoWheelVehicleController : MonoBehaviour
     {
         frontTire.transform.Rotate(Vector3.right, Time.deltaTime * tyreRotSpeed * currentVelocityOffset);
         backTire.transform.Rotate(Vector3.right, Time.deltaTime * tyreRotSpeed * currentVelocityOffset);
+    }
+
+    private void RotateExtraParts()
+    {
+        foreach (GameObject part in extraMovingParts)
+        {
+            part.transform.Rotate(Vector3.right, Time.deltaTime * tyreRotSpeed * currentVelocityOffset);
+        }
     }
 
     #region Input System Methods

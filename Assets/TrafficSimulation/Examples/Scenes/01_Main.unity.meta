@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/TrafficSimulation/Examples/Scenes/01_Main.unity.meta
 guid: 025f082e42b5b744db4811d08781ee3c
+========
+guid: 4db48c068c3e05041b473f9542506151
+>>>>>>>> feat/ale-carIA:Assets/Scenes/TEST/hola_gonzalo.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

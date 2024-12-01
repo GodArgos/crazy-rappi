@@ -46,14 +46,6 @@ public class DataManager : MonoBehaviour
 
     private string saveFilePath;
 
-    private void Update()
-    {
-        if (Keyboard.current.anyKey.wasPressedThisFrame)
-        {
-            AddDelivery();
-        }
-    }
-
     private void LoadData()
     {
         if (File.Exists(saveFilePath))

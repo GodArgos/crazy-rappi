@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 public class MainMenuLogic : MonoBehaviour
@@ -76,5 +77,7 @@ public class MainMenuLogic : MonoBehaviour
             videoPlayer.gameObject.SetActive(true);
             videoPlayer.Play();
         }
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

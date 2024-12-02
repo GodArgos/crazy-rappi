@@ -890,6 +890,31 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2262251759937674234, guid: 3c1b32b97c1284740b2f83e5470cdc87,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9968791
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262251759937674234, guid: 3c1b32b97c1284740b2f83e5470cdc87,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.07894449
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262251759937674234, guid: 3c1b32b97c1284740b2f83e5470cdc87,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.000000004985054
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262251759937674234, guid: 3c1b32b97c1284740b2f83e5470cdc87,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.000000025923487
+      objectReference: {fileID: 0}
+    - target: {fileID: 2262251759937674234, guid: 3c1b32b97c1284740b2f83e5470cdc87,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -9.056
+      objectReference: {fileID: 0}
     - target: {fileID: 5098685960964057553, guid: 3c1b32b97c1284740b2f83e5470cdc87,
         type: 3}
       propertyPath: leftFoot.target

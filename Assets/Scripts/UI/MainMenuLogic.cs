@@ -78,6 +78,11 @@ public class MainMenuLogic : MonoBehaviour
             videoPlayer.Play();
         }
 
+        while (videoPlayer.isPlaying)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

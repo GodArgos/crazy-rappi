@@ -989,20 +989,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2751348072740403759, guid: b11ec5061919c0e49878dda04607a283,
-        type: 3}
-      propertyPath: minSkidVelocity
-      value: 17.5
-      objectReference: {fileID: 0}
     - target: {fileID: 7186751580640330470, guid: b11ec5061919c0e49878dda04607a283,
         type: 3}
       propertyPath: m_Name
       value: Chopper_Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7186751580640330470, guid: b11ec5061919c0e49878dda04607a283,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8153423936643736384, guid: b11ec5061919c0e49878dda04607a283,
         type: 3}

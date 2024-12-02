@@ -106,6 +106,7 @@ public class TwoWheelVehicleController : MonoBehaviour
         m_rayLength = centerRB.GetComponent<SphereCollider>().radius + 0.2f;
         skidMarks.startWidth = skidWidth;
         skidMarks.emitting = false;
+        extraMovingParts = new List<GameObject>();
     }
 
     private void Update()
@@ -228,6 +229,8 @@ public class TwoWheelVehicleController : MonoBehaviour
 
     private void RotateExtraParts()
     {
+        if (extraMovingParts.Count <= 0) { return; } 
+        
         foreach (GameObject part in extraMovingParts)
         {
             part.transform.Rotate(Vector3.right, Time.deltaTime * tyreRotSpeed * currentVelocityOffset);

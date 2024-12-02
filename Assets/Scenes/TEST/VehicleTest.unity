@@ -381,8 +381,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 5125163490440933449}
-  m_Follow: {fileID: 4346897302768153868}
+  m_LookAt: {fileID: 897219643944172181}
+  m_Follow: {fileID: 691958901368145209}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
@@ -823,6 +823,18 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!4 &691958901368145209 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8153423936643736384, guid: b11ec5061919c0e49878dda04607a283,
+    type: 3}
+  m_PrefabInstance: {fileID: 6142124313386668641}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &897219643944172181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 676502199669054699, guid: b11ec5061919c0e49878dda04607a283,
+    type: 3}
+  m_PrefabInstance: {fileID: 6142124313386668641}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1665907568674015614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -896,12 +908,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 996c48c65dc13294ab3827e36147f3ba, type: 3}
---- !u!4 &4346897302768153868 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 414882952410624650, guid: 7939ea84d097b8b4282c962956894d35,
-    type: 3}
-  m_PrefabInstance: {fileID: 4776743758515418684}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4776743758515418684
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -975,12 +981,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7939ea84d097b8b4282c962956894d35, type: 3}
---- !u!4 &5125163490440933449 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 11313629042330918, guid: 7939ea84d097b8b4282c962956894d35,
-    type: 3}
-  m_PrefabInstance: {fileID: 4776743758515418684}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6142124313386668641
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -989,10 +989,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2751348072740403759, guid: b11ec5061919c0e49878dda04607a283,
+        type: 3}
+      propertyPath: minSkidVelocity
+      value: 17.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7186751580640330470, guid: b11ec5061919c0e49878dda04607a283,
         type: 3}
       propertyPath: m_Name
       value: Chopper_Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7186751580640330470, guid: b11ec5061919c0e49878dda04607a283,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8153423936643736384, guid: b11ec5061919c0e49878dda04607a283,
         type: 3}

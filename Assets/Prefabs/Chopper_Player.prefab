@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 274511978021552974}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.498, z: -0.814}
+  m_LocalPosition: {x: 0, y: -0.498, z: -1.373}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4396,9 +4396,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151265342683215018}
-  - component: {fileID: 1603434759489791013}
-  - component: {fileID: 4913424095906643365}
-  - component: {fileID: 6473340033032072549}
   m_Layer: 6
   m_Name: Chopper
   m_TagString: Untagged
@@ -4414,22 +4411,57 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3966607434584301329}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.02681303, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 4366113496522946488}
+  - {fileID: 8945657426309273272}
+  m_Father: {fileID: 4143476761871805382}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4038731364263336857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4143476761871805382}
+  - component: {fileID: 2697312297147542183}
+  - component: {fileID: 3071562042773602623}
+  - component: {fileID: 7081600824534303038}
+  m_Layer: 0
+  m_Name: VehicleBody
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4143476761871805382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4038731364263336857}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2060153192909340315}
-  - {fileID: 8945657426309273272}
+  - {fileID: 1151265342683215018}
   m_Father: {fileID: 8153423936643736384}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &1603434759489791013
+--- !u!54 &2697312297147542183
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966607434584301329}
+  m_GameObject: {fileID: 4038731364263336857}
   serializedVersion: 4
   m_Mass: 1
   m_Drag: 0
@@ -4450,13 +4482,13 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!138 &4913424095906643365
+--- !u!138 &3071562042773602623
 FixedJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966607434584301329}
+  m_GameObject: {fileID: 4038731364263336857}
   m_ConnectedBody: {fileID: 8839239681576339053}
   m_ConnectedArticulationBody: {fileID: 0}
   m_BreakForce: Infinity
@@ -4465,13 +4497,13 @@ FixedJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!65 &6473340033032072549
+--- !u!65 &7081600824534303038
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3966607434584301329}
+  m_GameObject: {fileID: 4038731364263336857}
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -4484,8 +4516,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.62519515, y: 1.112802, z: 3.8682365}
-  m_Center: {x: -0.023198307, y: 0.6022428, z: -0.0012433529}
+  m_Size: {x: 0.9724575, y: 1.3142698, z: 3.8690443}
+  m_Center: {x: 0.04682213, y: 0.72040415, z: 0.007255316}
 --- !u!1 &4132084587889134762
 GameObject:
   m_ObjectHideFlags: 0
@@ -4985,38 +5017,6 @@ Transform:
   - {fileID: 1279375946862904744}
   m_Father: {fileID: 2796621656131194818}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
---- !u!1 &4633194256513094937
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2060153192909340315}
-  m_Layer: 6
-  m_Name: ChopperBody
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2060153192909340315
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4633194256513094937}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0.5202217, z: 0}
-  m_LocalScale: {x: 63.86, y: 63.86, z: 63.86}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4366113496522946488}
-  m_Father: {fileID: 1151265342683215018}
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
 --- !u!1 &4703916213074345274
 GameObject:
   m_ObjectHideFlags: 0
@@ -6133,14 +6133,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5592639047273439266}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.5202217, z: 0}
+  m_LocalScale: {x: 63.86, y: 63.86, z: 63.86}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2796621656131194818}
   - {fileID: 1208457065901427248}
-  m_Father: {fileID: 2060153192909340315}
+  m_Father: {fileID: 1151265342683215018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5606795572107202556
 GameObject:
@@ -6338,7 +6338,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0.12618129, y: -0, z: -0, w: 0.99200726}
   m_LocalPosition: {x: 0, y: -0.25, z: -0.401}
-  m_LocalScale: {x: 1.2499999, y: 1.25, z: 1.25}
+  m_LocalScale: {x: 1.2499999, y: 1.2500001, z: 1.2500001}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 351197109125069360}
@@ -8717,9 +8717,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 676502199669054699}
-  - {fileID: 1151265342683215018}
   - {fileID: 2068642972274590089}
   - {fileID: 2942677934131953892}
+  - {fileID: 4143476761871805382}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2751348072740403759
@@ -8741,7 +8741,7 @@ MonoBehaviour:
   m_rayLength: 0.7
   m_gravity: 25
   centerRB: {fileID: 8839239681576339053}
-  vehicleBody: {fileID: 1603434759489791013}
+  vehicleBody: {fileID: 2697312297147542183}
   frontTire: {fileID: 7304827867427768297}
   backTire: {fileID: 4586532979018834951}
   extraMovingParts: []
@@ -8753,7 +8753,7 @@ MonoBehaviour:
   handleRotSpeed: 0.15
   skidMarks: {fileID: 144073531414127519}
   skidWidth: 0.35
-  minSkidVelocity: 8
+  minSkidVelocity: 17.5
   norDrag: 1.5
   driftDrag: 0.5
   zTiltAngle: 60

@@ -90,6 +90,7 @@ public class TwoWheelVehicleController : MonoBehaviour
     private RaycastHit hit;
     private float vehicleXTiltIncrement = 0.09f;
     private float currentVelocityOffset;
+    private Quaternion initialHandleRotation;
 
     private void Awake()
     {
@@ -107,6 +108,9 @@ public class TwoWheelVehicleController : MonoBehaviour
         skidMarks.startWidth = skidWidth;
         skidMarks.emitting = false;
         extraMovingParts = new List<GameObject>();
+
+        // Guardar la rotación inicial del manubrio
+        initialHandleRotation = vehicleHandle.transform.localRotation;
     }
 
     private void Update()
@@ -154,9 +158,19 @@ public class TwoWheelVehicleController : MonoBehaviour
     {
         transform.Rotate(0, steerInput * moveInput * turningCurve.Evaluate(Mathf.Abs(currentVelocityOffset)) * m_steerStrength * Time.fixedDeltaTime, 0, Space.World);
 
-        vehicleHandle.transform.localRotation = Quaternion.Slerp(vehicleHandle.transform.localRotation,
-                                                                 Quaternion.Euler(vehicleHandle.transform.localRotation.eulerAngles.x, handleRotVal * steerInput, vehicleHandle.transform.localRotation.eulerAngles.z),
-                                                                 handleRotSpeed);
+        // Calcular la rotación en el eje Y del manubrio
+        float targetYRotation = handleRotVal * steerInput;
+
+        // Crear una nueva rotación que solo afecta el eje Y
+        Quaternion targetRotation = Quaternion.Euler(initialHandleRotation.eulerAngles.x, initialHandleRotation.eulerAngles.y + targetYRotation, initialHandleRotation.eulerAngles.z);
+
+        // Aplicar suavemente la nueva rotación al manubrio
+        vehicleHandle.transform.localRotation = Quaternion.Slerp(
+            vehicleHandle.transform.localRotation,
+            targetRotation,
+            handleRotSpeed
+        );
+
     }
 
     private void VehicleTilt()

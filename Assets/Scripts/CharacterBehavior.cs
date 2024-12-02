@@ -17,7 +17,7 @@ public class CharacterBehavior : MonoBehaviour
     {
         Scape,
         Walk,
-        Stalk
+        Stop
     }
 
     void Start()
@@ -66,8 +66,8 @@ public class CharacterBehavior : MonoBehaviour
             case State.Walk:
                 WalkBehavior();
                 break;
-            case State.Stalk:
-                StalkBehavior();
+            case State.Stop:
+                StopBehavior();
                 break;
         }
     }
@@ -117,10 +117,10 @@ public class CharacterBehavior : MonoBehaviour
         Debug.Log("Caminando hacia el siguiente waypoint.");
     }
 
-    private void StalkBehavior()
+    private void StopBehavior()
     {
-        // Debug para verificar que está en estado Stalk.
-        Debug.Log("En estado Stalk: personaje inmóvil.");
+        // Debug para verificar que está en estado Stop.
+        Debug.Log("En estado Stop: personaje inmóvil.");
     }
 
     private void OnDrawGizmosSelected()

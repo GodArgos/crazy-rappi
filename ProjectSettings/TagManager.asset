@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Waypoint
+  - AutonomousVehicle
   layers:
   - Default
   - TransparentFX
@@ -17,6 +19,7 @@ TagManager:
   - OverUI
   - 
   - 
+  - AutonomousVehicle
   - 
   - 
   - 
@@ -24,6 +27,9 @@ TagManager:
   - 
   - 
   - 
+  - 
+  - 
+  - Route
   - 
   - 
   - 

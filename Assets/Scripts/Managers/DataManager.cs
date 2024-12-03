@@ -50,6 +50,10 @@ public class DataManager : MonoBehaviour
     public List<int> availableLevels;
     public List<int> purchasedVehicles;
 
+    [Header("Temp Data")]
+    public int selectedLevel = 0;
+    public int selectedVehicle = 0;
+
     private string saveFilePath;
     private float MAX_MONEY = 999999f;
     private int MAX_DELIVERY = 999999;

@@ -22,6 +22,7 @@ public class LevelControlManager : MonoBehaviour
     private int maxPriority = 100;
     private int minPriority = 0;
     private DefaultInputMap playerInput;
+    private ButtonPressSFX buttonSFX;
 
     private void Awake()
     {
@@ -34,6 +35,7 @@ public class LevelControlManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         ArrangeCameras();
         ArrangeLabels();
+        buttonSFX = GetComponent<ButtonPressSFX>();
         vehicleSelectorCanvas.SetActive(false);
     }
 
@@ -111,11 +113,13 @@ public class LevelControlManager : MonoBehaviour
 
     private void ChangeCameraLevelPrevious(InputAction.CallbackContext context)
     {
+        buttonSFX.ButtonSound();
         ChangeCameraLevel(-1);
     }
 
     private void ChangeCameraLevelNext(InputAction.CallbackContext context)
     {
+        buttonSFX.ButtonSound();
         ChangeCameraLevel(1);
     }
 
@@ -128,13 +132,16 @@ public class LevelControlManager : MonoBehaviour
             levelSelectorCanvas.SetActive(false);
             vehicleSelectorCanvas.SetActive(true);
             vehicleSelectorManager.enabled = true;
+            DataManager.Instance.selectedLevel = currentLevel;
             GetComponent<LevelControlManager>().enabled = false;
         }
+        buttonSFX.ButtonSound();
     }
 
     private void BackToMainMenuAction(InputAction.CallbackContext context)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        buttonSFX.ButtonSound();
+        BackToMainMenu();
     }
 
     public void BackToMainMenu()

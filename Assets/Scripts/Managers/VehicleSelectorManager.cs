@@ -13,8 +13,7 @@ public class VehicleSelectorManager : MonoBehaviour
     [SerializeField] private GameObject vehicleSelector;
     [SerializeField] private GameObject levelSelectorCanvas;
     [SerializeField] private LevelControlManager levelSelectorManager;
-    [SerializeField] private GameObject shopCanvas;
-    [SerializeField] private GameObject summaryCanvas;
+    [SerializeField] private GameObject readyCanvas;
 
     [Header("Dependencies")]
     [SerializeField] private List<GameObject> vehiclesLabels;
@@ -23,6 +22,7 @@ public class VehicleSelectorManager : MonoBehaviour
     [SerializeField] private AudioClip transitionClip;
     [SerializeField] private Animator vehicleAnimator;
     [SerializeField] private GameObject costText;
+    [SerializeField] private GameObject alerText;
     [SerializeField] private AudioClip purchaseClip;
 
     private AudioSource audioSource;
@@ -30,7 +30,7 @@ public class VehicleSelectorManager : MonoBehaviour
     private Dictionary<int, List<GameObject>> indexedLabels;
     public int currentVehicle = 0;
     private DefaultInputMap playerInput;
-
+    private ButtonPressSFX buttonSFX;
     private void Awake()
     {
         playerInput = new DefaultInputMap();
@@ -42,6 +42,7 @@ public class VehicleSelectorManager : MonoBehaviour
         ArrangeVehicles();
         ArrangeLabels();
         audioSource = GetComponent<AudioSource>();
+        buttonSFX = GetComponent<ButtonPressSFX>();
         GetComponent<VehicleSelectorManager>().enabled = false;
     }
 
@@ -152,11 +153,13 @@ public class VehicleSelectorManager : MonoBehaviour
 
     private void ChangeVehiclePrevious(InputAction.CallbackContext context)
     {
+        buttonSFX.ButtonSound();
         ChangeVehicle(-1);
     }
 
     private void ChangeVehicleNext(InputAction.CallbackContext context)
     {
+        buttonSFX.ButtonSound();
         ChangeVehicle(1);
     }
 
@@ -166,35 +169,47 @@ public class VehicleSelectorManager : MonoBehaviour
         {
             // Desactivar UI de Seleccion de nivel
             vehicleSelector.SetActive(false);
-            //summaryCanvas.SetActive(true);
+            GetComponent<ReadyMenuManager>().enabled = true;
+            readyCanvas.SetActive(true);
+            DataManager.Instance.selectedVehicle = currentVehicle;
             GetComponent<VehicleSelectorManager>().enabled = false;
         }
         else
         {
-            float value = -DataManager.Instance.vehiclesPrice[currentVehicle];
+            if (DataManager.Instance.vehiclesPrice[currentVehicle] <= DataManager.Instance.totalMoney)
+            {
+                float value = -DataManager.Instance.vehiclesPrice[currentVehicle];
 
-            DataManager.Instance.UpdateMoney(value);
-            DataManager.Instance.purchasedVehicles.Add(currentVehicle);
-            ActivateNLabel(currentVehicle);
-            
-            costText.GetComponent<TextMeshProUGUI>().text = value.ToString("N0").Replace(",", " ");
-            vehicleAnimator.SetTrigger("CostTrigger");
-            audioSource.PlayOneShot(purchaseClip);
+                DataManager.Instance.UpdateMoney(value);
+                DataManager.Instance.PurchaseVehicle(currentVehicle);
+                ActivateNLabel(currentVehicle);
+
+                costText.SetActive(true);
+                costText.GetComponent<TextMeshProUGUI>().text = value.ToString("N0").Replace(",", " ");
+                vehicleAnimator.SetTrigger("CostTrigger");
+                audioSource.PlayOneShot(purchaseClip);
+            }
+            else
+            {
+                alerText.SetActive(true);
+                vehicleAnimator.SetTrigger("NoMoney");
+            }
         }
+        buttonSFX.ButtonSound();
     }
 
     private void BackToMainMenuAction(InputAction.CallbackContext context)
     {
-        levelSelectorCanvas.SetActive(true);
-        levelSelectorManager.enabled = true;
-        vehicleSelector.SetActive(false);
-        GetComponent<VehicleSelectorManager>().enabled = false;
+        buttonSFX.ButtonSound();
+        BackToMainMenu();
     }
 
     public void BackToMainMenu()
     {
         levelSelectorCanvas.SetActive(true);
+        levelSelectorManager.enabled = true;
         vehicleSelector.SetActive(false);
+        GetComponent<VehicleSelectorManager>().enabled = false;
     }
 
     #region Input System Methods

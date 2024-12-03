@@ -898,6 +898,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bicycle_Player
       objectReference: {fileID: 0}
+    - target: {fileID: 6011421230393527222, guid: 996c48c65dc13294ab3827e36147f3ba,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -992,7 +997,7 @@ PrefabInstance:
     - target: {fileID: 7186751580640330470, guid: b11ec5061919c0e49878dda04607a283,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8153423936643736384, guid: b11ec5061919c0e49878dda04607a283,
         type: 3}

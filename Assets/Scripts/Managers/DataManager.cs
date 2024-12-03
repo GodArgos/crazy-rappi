@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -38,6 +39,11 @@ public class DataManager : MonoBehaviour
     }
     #endregion
 
+    #region Events
+    public event Action<float> OnMoneyChanged;
+    public event Action<int> OnDeliveryChanged;
+    #endregion
+
     [Header("Attributes")]
     public float totalMoney;
     public int totalDeliveries;
@@ -45,6 +51,15 @@ public class DataManager : MonoBehaviour
     public List<int> purchasedVehicles;
 
     private string saveFilePath;
+    private float MAX_MONEY = 999999f;
+    private int MAX_DELIVERY = 999999;
+
+    public Dictionary<int, float> vehiclesPrice = new Dictionary<int, float>
+    {
+        { 0, 0 },
+        { 1, 2000 },
+        { 2, 5000 }
+    };
 
     private void LoadData()
     {
@@ -63,8 +78,8 @@ public class DataManager : MonoBehaviour
             // Crear datos iniciales si no existe el archivo
             totalMoney = 0;
             totalDeliveries = 0;
-            availableLevels = new List<int> { 1 }; // Nivel inicial disponible
-            purchasedVehicles = new List<int> { 1 }; // Vehículos inicial disponible
+            availableLevels = new List<int> { 0 }; // Nivel inicial disponible
+            purchasedVehicles = new List<int> { 0 }; // Vehículos inicial disponible
             SaveData();
         }
     }
@@ -85,15 +100,27 @@ public class DataManager : MonoBehaviour
     }
 
     // Ejemplo de funciones para modificar datos y guardar automáticamente
-    public void AddMoney(float amount)
+    public void UpdateMoney(float amount)
     {
         totalMoney += amount;
+        if (totalMoney >= MAX_MONEY)
+        {
+            totalMoney = MAX_MONEY;
+        }
+
+        OnMoneyChanged?.Invoke(totalMoney); // Dispara el evento
         SaveData();
     }
 
-    public void AddDelivery()
+    public void UpdateDelivery(int amount)
     {
-        totalDeliveries++;
+        totalDeliveries += amount;
+        if (totalDeliveries >= MAX_DELIVERY)
+        {
+            totalDeliveries = MAX_DELIVERY;
+        }
+
+        OnDeliveryChanged?.Invoke(totalDeliveries); // Dispara el evento
         SaveData();
     }
 

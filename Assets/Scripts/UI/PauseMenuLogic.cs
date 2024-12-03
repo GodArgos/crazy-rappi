@@ -10,6 +10,7 @@ public class PauseMenuLogic : MonoBehaviour
     [Header("Dependencies")]
     [SerializeField] private GameObject hudCanvas;
     [SerializeField] private GameObject pauseMenuUI; // El contenedor del menú de pausa
+    [SerializeField] private MusicController musicController;
     private bool isPaused = false;
     private DefaultInputMap playerInput;
 
@@ -29,10 +30,12 @@ public class PauseMenuLogic : MonoBehaviour
         if (isPaused)
         {
             ResumeGame();
+            musicController.ResumeAll();
         }
         else
         {
             PauseGame();
+            musicController.PauseAll();
         }
     }
 

@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private ArrowPointer arrow;
     [SerializeField] private DeliveryManager deliveryManager;
     [SerializeField] private SummaryMenuLogic summaryLogic;
+    [SerializeField] private MusicController musicController;
     private GameObject currentPlayer;
     private float timerAccumulator = 0f;
     private Rigidbody playerRigidbody;
@@ -89,6 +90,8 @@ public class GameManager : MonoBehaviour
             playerRigidbody = selectedVehicleTransform.GetComponent<TwoWheelVehicleController>().centerRB;
             virtualCamera.Follow = selectedVehicleTransform;
             virtualCamera.LookAt = selectedVehicleTransform.GetComponent<TwoWheelVehicleController>().lookCamera;
+
+            selectedVehicleTransform.parent = null;
         }
         else
         {
@@ -149,6 +152,7 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
+        musicController.StopAll();
         summaryLogic.ShowSummary(deliveriesQuantity, totalMoney);
     }
 }

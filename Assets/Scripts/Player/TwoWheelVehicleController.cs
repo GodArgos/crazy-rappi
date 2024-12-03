@@ -56,12 +56,13 @@ public class TwoWheelVehicleController : MonoBehaviour
     #endregion
 
     [Header("Dependencies")]
-    [SerializeField] private Rigidbody centerRB;
+    [HideInInspector] public Rigidbody centerRB;
     [SerializeField] private Rigidbody vehicleBody;
     [SerializeField] private GameObject frontTire;
     [SerializeField] private GameObject backTire;
     [SerializeField] private List<GameObject> extraMovingParts;
     [SerializeField] private LayerMask drivableSurfice;
+    public Transform lookCamera;
 
     [Header("Handle Logic")]
     [SerializeField] private GameObject vehicleHandle;

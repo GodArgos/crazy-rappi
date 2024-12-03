@@ -4418,6 +4418,7 @@ Transform:
   m_Children:
   - {fileID: 4366113496522946488}
   - {fileID: 8945657426309273272}
+  - {fileID: 676502199669054699}
   m_Father: {fileID: 4143476761871805382}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4038731364263336857
@@ -4434,7 +4435,7 @@ GameObject:
   - component: {fileID: 7081600824534303038}
   m_Layer: 0
   m_Name: VehicleBody
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4616,7 +4617,7 @@ GameObject:
   - component: {fileID: 8839239681576339053}
   m_Layer: 7
   m_Name: VehicleCenter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8698,7 +8699,7 @@ GameObject:
   - component: {fileID: 2751348072740403759}
   m_Layer: 0
   m_Name: Chopper_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8716,7 +8717,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 676502199669054699}
   - {fileID: 2068642972274590089}
   - {fileID: 2942677934131953892}
   - {fileID: 4143476761871805382}
@@ -8748,6 +8748,7 @@ MonoBehaviour:
   drivableSurfice:
     serializedVersion: 2
     m_Bits: 256
+  lookCamera: {fileID: 676502199669054699}
   vehicleHandle: {fileID: 3919233928063896042}
   handleRotVal: 10
   handleRotSpeed: 0.15
@@ -10765,11 +10766,11 @@ Transform:
   m_GameObject: {fileID: 8573318685737774423}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.202}
+  m_LocalPosition: {x: -0.02681303, y: 1, z: -0.20202637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8153423936643736384}
+  m_Father: {fileID: 1151265342683215018}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8772890956224684103
 GameObject:

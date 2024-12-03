@@ -140,7 +140,7 @@ GameObject:
   - component: {fileID: 7013972368468891851}
   m_Layer: 6
   m_Name: Motorcycle
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -160,6 +160,7 @@ Transform:
   m_Children:
   - {fileID: 2167913787150160147}
   - {fileID: 9023899225931316202}
+  - {fileID: 11313629042330918}
   m_Father: {fileID: 414882952410624650}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &418141547349707125
@@ -325,7 +326,7 @@ GameObject:
   - component: {fileID: 4361713199695265008}
   m_Layer: 0
   m_Name: Motorcycle_Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -343,7 +344,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 11313629042330918}
   - {fileID: 4636195536159125271}
   - {fileID: 8446595102182242176}
   - {fileID: 7586424951229226628}
@@ -375,6 +375,7 @@ MonoBehaviour:
   drivableSurfice:
     serializedVersion: 2
     m_Bits: 256
+  lookCamera: {fileID: 11313629042330918}
   vehicleHandle: {fileID: 8269296936801994209}
   handleRotVal: 30
   handleRotSpeed: 0.15
@@ -590,11 +591,11 @@ Transform:
   m_GameObject: {fileID: 4436803071975382393}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -0.202}
+  m_LocalPosition: {x: 0, y: 1, z: -0.20202637}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414882952410624650}
+  m_Father: {fileID: 4636195536159125271}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5887876805816461427
 GameObject:
@@ -757,7 +758,7 @@ GameObject:
   - component: {fileID: 5370424626396411878}
   m_Layer: 7
   m_Name: VehicleCenter
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

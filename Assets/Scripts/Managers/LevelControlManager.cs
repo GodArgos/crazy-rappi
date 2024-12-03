@@ -11,13 +11,15 @@ public class LevelControlManager : MonoBehaviour
     [SerializeField] private GameObject levelSelectorCanvas;
     [SerializeField] private GameObject vehicleSelectorCanvas;
     [SerializeField] private VehicleSelectorManager vehicleSelectorManager;
-    [SerializeField] private List<CinemachineVirtualCamera> levelCameras;
+    //[SerializeField] private List<CinemachineVirtualCamera> levelCameras;
     [SerializeField] private List<GameObject> levelLabels;
+    [SerializeField] private List<GameObject> levelPreviews;
     [SerializeField] private Animator transitionAnimator;
     [SerializeField] private AudioClip transitionClip;
     private AudioSource audioSource;
-    private Dictionary<int, CinemachineVirtualCamera> indexedCameras;
+    //private Dictionary<int, CinemachineVirtualCamera> indexedCameras;
     private Dictionary<int, GameObject> indexedLabels;
+    private Dictionary<int, GameObject> indexedLevels;
     public int currentLevel = 0;
     private int maxPriority = 100;
     private int minPriority = 0;
@@ -33,23 +35,24 @@ public class LevelControlManager : MonoBehaviour
     {
         ActionEventsSubscription();
         audioSource = GetComponent<AudioSource>();
-        ArrangeCameras();
+        //ArrangeCameras();
         ArrangeLabels();
+        ArrangeLevels();
         buttonSFX = GetComponent<ButtonPressSFX>();
         vehicleSelectorCanvas.SetActive(false);
     }
 
-    private void ArrangeCameras()
-    {
-        indexedCameras = new Dictionary<int, CinemachineVirtualCamera>();
+    //private void ArrangeCameras()
+    //{
+    //    indexedCameras = new Dictionary<int, CinemachineVirtualCamera>();
 
-        for (int i = 0; i < levelCameras.Count;i++)
-        {
-            indexedCameras[i] = levelCameras[i];
-        }
+    //    for (int i = 0; i < levelCameras.Count;i++)
+    //    {
+    //        indexedCameras[i] = levelCameras[i];
+    //    }
 
-        ActivateNCamera(currentLevel);
-    }
+    //    ActivateNCamera(currentLevel);
+    //}
 
     private void ArrangeLabels()
     {
@@ -63,20 +66,47 @@ public class LevelControlManager : MonoBehaviour
         ActivateNLabel(currentLevel);
     }
 
-    private void ActivateNCamera(int index)
+    private void ArrangeLevels()
     {
-        foreach (var cam in indexedCameras)
+        indexedLevels = new Dictionary<int, GameObject>();
+
+        for (int i = 0; i < levelPreviews.Count; i++)
         {
-            if (cam.Key == index)
+            indexedLevels[i] = levelPreviews[i];
+        }
+
+        ActivateNLevel(currentLevel);
+    }
+
+    private void ActivateNLevel(int index)
+    {
+        foreach (var level in indexedLevels)
+        {
+            if (level.Key == index)
             {
-                cam.Value.Priority = maxPriority;
+                level.Value.SetActive(true);
             }
             else
             {
-                cam.Value.Priority = minPriority;
+                level.Value.SetActive(false);
             }
         }
     }
+
+    //private void ActivateNCamera(int index)
+    //{
+    //    foreach (var cam in indexedCameras)
+    //    {
+    //        if (cam.Key == index)
+    //        {
+    //            cam.Value.Priority = maxPriority;
+    //        }
+    //        else
+    //        {
+    //            cam.Value.Priority = minPriority;
+    //        }
+    //    }
+    //}
 
     private void ActivateNLabel(int index)
     {
@@ -96,18 +126,18 @@ public class LevelControlManager : MonoBehaviour
     public void ChangeCameraLevel(int value)
     {
         currentLevel += value;
-        if (currentLevel >= levelCameras.Count)
+        if (currentLevel >= levelPreviews.Count)
         {
             currentLevel = 0;
         }
         else if (currentLevel < 0)
         {
-            currentLevel = levelCameras.Count - 1;
+            currentLevel = levelPreviews.Count - 1;
         }
 
         transitionAnimator.SetTrigger("LevelChanged");
         audioSource.PlayOneShot(transitionClip);
-        ActivateNCamera(currentLevel);
+        ActivateNLevel(currentLevel);
         ActivateNLabel(currentLevel);
     }
 

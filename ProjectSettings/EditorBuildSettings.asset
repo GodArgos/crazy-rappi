@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GAME/SelectionMenu.unity
     guid: 3ac477affd41900488803101613bda34
+  - enabled: 1
+    path: Assets/Scenes/GAME/NIVEL_1_SAN_ISIDRO.unity
+    guid: 3916a175082b4074dab7c08b09c1d487
   m_configObjects: {}

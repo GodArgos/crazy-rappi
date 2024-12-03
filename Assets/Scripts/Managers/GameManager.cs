@@ -26,6 +26,7 @@ public class GameManager : MonoBehaviour
     public int timer = 30;
     public int totalMoney = 0;
     public int currentMoney = 0;
+    public int deliveriesQuantity = 0;
 
     [Header("DEPENDENCIES")]
     [SerializeField] private CinemachineVirtualCamera virtualCamera;
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Transform playerParent;
     [SerializeField] private ArrowPointer arrow;
     [SerializeField] private DeliveryManager deliveryManager;
+    [SerializeField] private SummaryMenuLogic summaryLogic;
     private GameObject currentPlayer;
     private float timerAccumulator = 0f;
     private Rigidbody playerRigidbody;
@@ -134,6 +136,11 @@ public class GameManager : MonoBehaviour
         OnCurrentMoneyChanged?.Invoke(currentMoney);
     }
 
+    public void UpdateDeliveriesQuantity()
+    {
+        deliveriesQuantity++;
+    }
+
     public void ResetCurrentMoney()
     {
         currentMoney = 0;
@@ -142,7 +149,6 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        Debug.Log("Game Over!");
-        Time.timeScale = 0;
+        summaryLogic.ShowSummary(deliveriesQuantity, totalMoney);
     }
 }

@@ -118,7 +118,7 @@ public class DeliveryManager : MonoBehaviour
         // Actualiza el dinero total y el tiempo de juego
         gameManager.AddToTotalMoney((int)currentDeliveryPrice);
         gameManager.AddTimeBonification(timeBonus);
-
+        gameManager.UpdateDeliveriesQuantity();
         // Reinicia el ciclo seleccionando otro punto de recojo
         SelectCollectPoint();
     }

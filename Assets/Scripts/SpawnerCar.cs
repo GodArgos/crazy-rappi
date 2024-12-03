@@ -7,9 +7,13 @@ public class SpawnerCar : MonoBehaviour
     [SerializeField]
     private GameObject[] cars;
     private int spawnIndex;
+    [SerializeField]
     private float spawnTime = 5f;
 
     private int alreadySpawnedCount = 0;
+
+    [SerializeField]
+    private bool isInfinity = false;
     private int maxSpawnCount = 20;
 
     [SerializeField]
@@ -25,7 +29,7 @@ public class SpawnerCar : MonoBehaviour
 
     private void Update()
     {
-        if (alreadySpawnedCount >= maxSpawnCount)
+        if (alreadySpawnedCount >= maxSpawnCount && !isInfinity)
             return;
 
         elapsedTime += Time.deltaTime;

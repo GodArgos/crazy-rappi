@@ -167,7 +167,7 @@ Transform:
   m_GameObject: {fileID: 2400368484879163336}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0295, z: 0.1341}
+  m_LocalPosition: {x: 0, y: 0.0371, z: 0.1341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -274,8 +274,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 30, y: 30, z: 25}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7217350838208957441}
   - {fileID: 2467981771413927709}
@@ -344,13 +344,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSystem: {fileID: 0}
-  waypointThresh: 0.5
+  waypointThresh: 0.3
   raycastAnchor: {fileID: 5813149441768936359}
-  raycastLength: 12
+  raycastLength: 8
   raySpacing: 5
-  raysNumber: 8
-  emergencyBrakeThresh: 6
-  slowDownThresh: 8
+  raysNumber: 5
+  emergencyBrakeThresh: 2
+  slowDownThresh: 4
   vehicleStatus: 0
 --- !u!114 &4064483233753082550
 MonoBehaviour:
@@ -364,15 +364,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5021f9004f348d74abb4f0ae3ed02375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downForce: 100
-  maxAngle: 25
-  steeringLerp: 3
-  steeringSpeedMax: 10
-  maxTorque: 300
+  downForce: 50
+  maxAngle: 55
+  steeringLerp: 5
+  steeringSpeedMax: 35
+  maxTorque: 250
   brakeTorque: 30000
-  unitType: 0
-  minSpeed: 8000
-  maxSpeed: 9000
+  unitType: 1
+  minSpeed: 800000
+  maxSpeed: 900000
   leftWheelShape: {fileID: 1009247283869448885}
   rightWheelShape: {fileID: 2985334020574515221}
   animateWheels: 1
@@ -909,8 +909,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.13856903, y: 0.048224777, z: 0.29933706}
-  m_Center: {x: -0.000368461, y: 0.03318526, z: 0.0041291267}
+  m_Size: {x: 0.13856903, y: 0.04086706, z: 0.29085118}
+  m_Center: {x: -0.000368468, y: 0.036864195, z: -0.00027819476}
 --- !u!1 &8312493786271615974
 GameObject:
   m_ObjectHideFlags: 0

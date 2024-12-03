@@ -51,8 +51,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 0.38136423, z: 2.6748428}
-  m_Center: {x: 0, y: 0.3093179, z: 1.4409683}
+  m_Size: {x: 1.1408803, y: 0.42699292, z: 2.7710302}
+  m_Center: {x: -0.010957431, y: 0.3509164, z: 1.4536362}
 --- !u!1 &674345580386434225
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,8 +167,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 30, y: 30, z: 30}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 30, y: 30, z: 25}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6700248459313875113}
   - {fileID: 4117542776632144413}
@@ -223,8 +223,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.2, y: 0.09231252, z: 0.33009738}
-  m_Center: {x: 0, y: 0.04615626, z: 0.0009999408}
+  m_Size: {x: 0.15547502, y: 0.09231252, z: 0.33009738}
+  m_Center: {x: 0.0031305354, y: 0.04615626, z: 0.0009999466}
 --- !u!114 &4165882800880397060
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -238,13 +238,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trafficSystem: {fileID: 0}
-  waypointThresh: 0.5
+  waypointThresh: 0.3
   raycastAnchor: {fileID: 6261144684240371451}
-  raycastLength: 12
+  raycastLength: 8
   raySpacing: 5
-  raysNumber: 8
-  emergencyBrakeThresh: 6
-  slowDownThresh: 8
+  raysNumber: 5
+  emergencyBrakeThresh: 2
+  slowDownThresh: 4
   vehicleStatus: 0
 --- !u!114 &1935954092291304489
 MonoBehaviour:
@@ -258,15 +258,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5021f9004f348d74abb4f0ae3ed02375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  downForce: 100
-  maxAngle: 25
+  downForce: 50
+  maxAngle: 55
   steeringLerp: 3
-  steeringSpeedMax: 10
-  maxTorque: 300
+  steeringSpeedMax: 35
+  maxTorque: 250
   brakeTorque: 30000
-  unitType: 0
-  minSpeed: 8000
-  maxSpeed: 9000
+  unitType: 1
+  minSpeed: 800000
+  maxSpeed: 900000
   leftWheelShape: {fileID: 2219680812272293411}
   rightWheelShape: {fileID: 2517114868697347405}
   animateWheels: 1
@@ -902,7 +902,7 @@ Transform:
   m_GameObject: {fileID: 6671636906382704758}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.0307, z: 0.143}
+  m_LocalPosition: {x: 0, y: 0.0345, z: 0.1456}
   m_LocalScale: {x: 0.11111112, y: 0.11111112, z: 0.11111112}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -53,6 +53,15 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reset"",
+                    ""type"": ""Button"",
+                    ""id"": ""057a38a5-f23a-4145-a4a5-e98960f6f9f9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -187,6 +196,17 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
                     ""action"": ""ChangeRadio"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c77346a8-d0c7-4ccf-8f14-d126187cc51a"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reset"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         },
@@ -303,6 +323,7 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
         m_InGame_Move = m_InGame.FindAction("Move", throwIfNotFound: true);
         m_InGame_Brake = m_InGame.FindAction("Brake", throwIfNotFound: true);
         m_InGame_ChangeRadio = m_InGame.FindAction("ChangeRadio", throwIfNotFound: true);
+        m_InGame_Reset = m_InGame.FindAction("Reset", throwIfNotFound: true);
         // Menu
         m_Menu = asset.FindActionMap("Menu", throwIfNotFound: true);
         m_Menu_Accept = m_Menu.FindAction("Accept", throwIfNotFound: true);
@@ -373,6 +394,7 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
     private readonly InputAction m_InGame_Move;
     private readonly InputAction m_InGame_Brake;
     private readonly InputAction m_InGame_ChangeRadio;
+    private readonly InputAction m_InGame_Reset;
     public struct InGameActions
     {
         private @DefaultInputMap m_Wrapper;
@@ -380,6 +402,7 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
         public InputAction @Move => m_Wrapper.m_InGame_Move;
         public InputAction @Brake => m_Wrapper.m_InGame_Brake;
         public InputAction @ChangeRadio => m_Wrapper.m_InGame_ChangeRadio;
+        public InputAction @Reset => m_Wrapper.m_InGame_Reset;
         public InputActionMap Get() { return m_Wrapper.m_InGame; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -398,6 +421,9 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
             @ChangeRadio.started += instance.OnChangeRadio;
             @ChangeRadio.performed += instance.OnChangeRadio;
             @ChangeRadio.canceled += instance.OnChangeRadio;
+            @Reset.started += instance.OnReset;
+            @Reset.performed += instance.OnReset;
+            @Reset.canceled += instance.OnReset;
         }
 
         private void UnregisterCallbacks(IInGameActions instance)
@@ -411,6 +437,9 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
             @ChangeRadio.started -= instance.OnChangeRadio;
             @ChangeRadio.performed -= instance.OnChangeRadio;
             @ChangeRadio.canceled -= instance.OnChangeRadio;
+            @Reset.started -= instance.OnReset;
+            @Reset.performed -= instance.OnReset;
+            @Reset.canceled -= instance.OnReset;
         }
 
         public void RemoveCallbacks(IInGameActions instance)
@@ -512,6 +541,7 @@ public partial class @DefaultInputMap: IInputActionCollection2, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnChangeRadio(InputAction.CallbackContext context);
+        void OnReset(InputAction.CallbackContext context);
     }
     public interface IMenuActions
     {

@@ -39,7 +39,7 @@ public class TwoWheelVehicleController : MonoBehaviour
     }
 
     [SerializeField]
-    private float m_rayLength;
+    private float m_rayLength = 0.7f;
     public float RayLength
     {
         get { return m_rayLength; }
@@ -105,7 +105,6 @@ public class TwoWheelVehicleController : MonoBehaviour
         centerRB.transform.parent = null;
         vehicleBody.transform.parent = null;
 
-        m_rayLength = centerRB.GetComponent<SphereCollider>().radius + 0.2f;
         skidMarks.startWidth = skidWidth;
         skidMarks.emitting = false;
         extraMovingParts = new List<GameObject>();
@@ -256,11 +255,13 @@ public class TwoWheelVehicleController : MonoBehaviour
     private void ActionEventsSubscription()
     {
         BrakeSubscription();
+        ResetSubscription();
     }
 
     private void ActionEventsUnSubscription()
     {
         BrakeUnSubscription();
+        ResetUnSubscription();
     }
     
     private void OnEnable()
@@ -303,6 +304,26 @@ public class TwoWheelVehicleController : MonoBehaviour
         if (brakeState)
         {
             brakeState = false;
+        }
+    }
+    #endregion
+
+    #region Reseting
+    private void ResetSubscription()
+    {
+        playerInput.InGame.Reset.performed += OnReset;
+    }
+
+    private void ResetUnSubscription()
+    {
+        playerInput.InGame.Reset.performed -= OnReset;
+    }
+
+    private void OnReset(InputAction.CallbackContext context)
+    {
+        if (Grounded())
+        {
+            centerRB.position = new Vector3(centerRB.position.x, centerRB.position.y + 2, centerRB.position.z);
         }
     }
     #endregion

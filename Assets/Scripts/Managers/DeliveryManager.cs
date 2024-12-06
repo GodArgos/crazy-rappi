@@ -32,6 +32,9 @@ public class DeliveryManager : MonoBehaviour
 
     private void SelectCollectPoint()
     {
+        // Actualiza el GameManager con el precio de la entrega actual
+        gameManager.UpdateCurrentMoney(0);
+
         // Selecciona un punto de recojo cercano al jugador
         currentCollectPoint = GetClosestPoint(collectPointsParent, player.position);
 

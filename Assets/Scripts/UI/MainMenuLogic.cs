@@ -65,6 +65,22 @@ public class MainMenuLogic : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
 
+        if (animator != null)
+        {
+            animator.SetTrigger("FinalTransition");
+        }
+
+    }
+
+    public void FinalCinematic()
+    {
+        StartCoroutine(FinalCoroutine());
+    }
+
+    private IEnumerator FinalCoroutine()
+    {
+        
+
         if (audioSource != null && outroClip != null)
         {
             audioSource.PlayOneShot(outroClip);

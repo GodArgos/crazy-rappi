@@ -14,14 +14,11 @@ public class PickUpTrigger : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         if (isPickedUp) return; // Evitar múltiples activaciones
-        Debug.Log("HEREREE");
         if (other.CompareTag("Player")) // Verifica que el jugador haya entrado
         {
-            Debug.Log("AJAJAJAJ");
             // Si el jugador está dentro del trigger, verifica su velocidad
             if (playerRigidbody.velocity.magnitude <= requiredStopSpeed)
             {
-                Debug.Log("JAOSDJAOJS");
                 PickupPackage();
             }
         }

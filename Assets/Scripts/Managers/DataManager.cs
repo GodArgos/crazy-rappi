@@ -23,7 +23,7 @@ public class DataManager : MonoBehaviour
             DontDestroyOnLoad(this);
         }
 
-        saveFilePath = Path.Combine(Application.persistentDataPath, "gameData.json");
+        saveFilePath = GetSavePath("gameData.json");
         LoadData();
     }
     #endregion
@@ -144,5 +144,20 @@ public class DataManager : MonoBehaviour
             purchasedVehicles.Add(vehicleIndex);
             SaveData();
         }
+    }
+
+    private string GetSavePath(string filename)
+    {
+        var path = Application.persistentDataPath;
+#if UNITY_WEBGL && !UNITY_EDITOR
+         path = "/idbfs/crazy-rappi";
+          if (!Directory.Exists(path)) {
+             Directory.CreateDirectory(path);
+             Debug.Log("Creating save directory: " + path);
+         }
+#endif
+        var result = Path.Combine(path, filename);
+        Debug.Log("Save path: " + result);
+        return result;
     }
 }

@@ -147,6 +147,12 @@ public class VehicleSelectorManager : MonoBehaviour
 
         transitionAnimator.SetTrigger("LevelChanged");
         audioSource.PlayOneShot(transitionClip);
+        StartCoroutine(VehicleTransition());
+    }
+
+    private IEnumerator VehicleTransition()
+    {
+        yield return new WaitForSeconds(0.5f);
         ActivateNVehicle(currentVehicle);
         ActivateNLabel(currentVehicle);
     }

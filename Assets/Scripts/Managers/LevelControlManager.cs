@@ -123,7 +123,7 @@ public class LevelControlManager : MonoBehaviour
         }
     }
 
-    public void ChangeCameraLevel(int value)
+    public void ChangeLevel(int value)
     {
         currentLevel += value;
         if (currentLevel >= levelPreviews.Count)
@@ -135,22 +135,31 @@ public class LevelControlManager : MonoBehaviour
             currentLevel = levelPreviews.Count - 1;
         }
 
+        transitionAnimator.SetFloat("Direction", value);
         transitionAnimator.SetTrigger("LevelChanged");
         audioSource.PlayOneShot(transitionClip);
+
+        StartCoroutine(LevelTransition());
+    }
+
+    private IEnumerator LevelTransition()
+    {
+        yield return new WaitForSeconds(0.5f);
         ActivateNLevel(currentLevel);
         ActivateNLabel(currentLevel);
     }
 
+
     private void ChangeCameraLevelPrevious(InputAction.CallbackContext context)
     {
         buttonSFX.ButtonSound();
-        ChangeCameraLevel(-1);
+        ChangeLevel(-1);
     }
 
     private void ChangeCameraLevelNext(InputAction.CallbackContext context)
     {
         buttonSFX.ButtonSound();
-        ChangeCameraLevel(1);
+        ChangeLevel(1);
     }
 
 

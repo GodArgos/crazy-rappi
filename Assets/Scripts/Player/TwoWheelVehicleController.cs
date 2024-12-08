@@ -56,8 +56,8 @@ public class TwoWheelVehicleController : MonoBehaviour
     #endregion
 
     [Header("Dependencies")]
-    [HideInInspector] public Rigidbody centerRB;
-    [SerializeField] private Rigidbody vehicleBody;
+    public Rigidbody centerRB;
+    public Rigidbody vehicleBody;
     [SerializeField] private GameObject frontTire;
     [SerializeField] private GameObject backTire;
     [SerializeField] private List<GameObject> extraMovingParts;
@@ -255,13 +255,11 @@ public class TwoWheelVehicleController : MonoBehaviour
     private void ActionEventsSubscription()
     {
         BrakeSubscription();
-        ResetSubscription();
     }
 
     private void ActionEventsUnSubscription()
     {
         BrakeUnSubscription();
-        ResetUnSubscription();
     }
     
     private void OnEnable()
@@ -304,26 +302,6 @@ public class TwoWheelVehicleController : MonoBehaviour
         if (brakeState)
         {
             brakeState = false;
-        }
-    }
-    #endregion
-
-    #region Reseting
-    private void ResetSubscription()
-    {
-        playerInput.InGame.Reset.performed += OnReset;
-    }
-
-    private void ResetUnSubscription()
-    {
-        playerInput.InGame.Reset.performed -= OnReset;
-    }
-
-    private void OnReset(InputAction.CallbackContext context)
-    {
-        if (Grounded())
-        {
-            centerRB.position = new Vector3(centerRB.position.x, centerRB.position.y + 2, centerRB.position.z);
         }
     }
     #endregion

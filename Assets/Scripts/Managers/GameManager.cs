@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private DeliveryManager deliveryManager;
     [SerializeField] private SummaryMenuLogic summaryLogic;
     [SerializeField] private MusicController musicController;
-    private GameObject currentPlayer;
+    [HideInInspector] public GameObject currentPlayer;
     private float timerAccumulator = 0f;
     private Rigidbody playerRigidbody;
 

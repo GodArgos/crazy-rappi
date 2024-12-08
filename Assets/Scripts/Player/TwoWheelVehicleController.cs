@@ -107,7 +107,6 @@ public class TwoWheelVehicleController : MonoBehaviour
 
         skidMarks.startWidth = skidWidth;
         skidMarks.emitting = false;
-        extraMovingParts = new List<GameObject>();
 
         // Guardar la rotación inicial del manubrio
         initialHandleRotation = vehicleHandle.transform.localRotation;
@@ -187,7 +186,8 @@ public class TwoWheelVehicleController : MonoBehaviour
         
         Quaternion newRotation = Quaternion.Euler(targetRot.eulerAngles.x, transform.eulerAngles.y, targetRot.eulerAngles.z);
 
-        vehicleBody.MoveRotation(newRotation);
+        vehicleBody.rotation = newRotation;
+        //vehicleBody.MoveRotation(newRotation);
     }
 
     private void Brake()

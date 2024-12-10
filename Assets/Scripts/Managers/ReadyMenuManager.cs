@@ -13,8 +13,8 @@ public class ReadyMenuManager : MonoBehaviour
     [SerializeField] private VehicleSelectorManager vehicleSelectorManager;
 
     [Header("Dependencies")]
-    [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private AudioClip outroClip;
+    [SerializeField] private Animator transitionAnimator;
 
     private AudioSource audioSource;
     private DefaultInputMap playerInput;
@@ -30,7 +30,6 @@ public class ReadyMenuManager : MonoBehaviour
         ActionEventsSubscription();
         audioSource = GetComponent<AudioSource>();
         readyCanvas.SetActive(false);
-        videoPlayer.gameObject.SetActive(false);
         buttonSFX = GetComponent<ButtonPressSFX>();
         GetComponent<ReadyMenuManager>().enabled = false;
     }
@@ -38,29 +37,15 @@ public class ReadyMenuManager : MonoBehaviour
     private void StartGameAction(InputAction.CallbackContext context)
     {
         buttonSFX.ButtonSound();
-        StartCoroutine(TriggerTransition());
-    }
-
-    private IEnumerator TriggerTransition()
-    {
+        transitionAnimator.SetTrigger("Ready");
         if (audioSource != null && outroClip != null)
         {
             audioSource.PlayOneShot(outroClip);
         }
+    }
 
-        yield return new WaitForSeconds(1f);
-
-        if (videoPlayer != null)
-        {
-            videoPlayer.gameObject.SetActive(true);
-            videoPlayer.Play();
-        }
-
-        while (videoPlayer.isPlaying)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-
+    public void EndTransition()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + DataManager.Instance.selectedLevel + 1);
     }
 

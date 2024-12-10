@@ -5,28 +5,10 @@ using UnityEngine.Video;
 
 public class TransitionCanvasLogic : MonoBehaviour
 {
-    [SerializeField] private VideoPlayer videoPlayer;
+    [SerializeField] private ReadyMenuManager readyMenu;
 
-    private void Start()
+    public void EndCinematic()
     {
-        videoPlayer.gameObject.SetActive(false);
-    }
-
-    public void ActivateStartTrasition()
-    {
-        StartCoroutine(ActivationCoroutine());
-    }
-
-    private IEnumerator ActivationCoroutine()
-    {
-        videoPlayer.gameObject.SetActive(true);
-        videoPlayer.Play();
-
-        while (videoPlayer.isPlaying)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-
-        videoPlayer.gameObject.SetActive(false);
+        readyMenu.EndTransition();
     }
 }

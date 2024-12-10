@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
@@ -69,36 +68,18 @@ public class MainMenuLogic : MonoBehaviour
         {
             animator.SetTrigger("FinalTransition");
         }
-
     }
 
     public void FinalCinematic()
     {
-        StartCoroutine(FinalCoroutine());
-    }
-
-    private IEnumerator FinalCoroutine()
-    {
-        
-
         if (audioSource != null && outroClip != null)
         {
             audioSource.PlayOneShot(outroClip);
         }
+    }
 
-        yield return new WaitForSeconds(1f);
-
-        if (videoPlayer != null)
-        {
-            videoPlayer.gameObject.SetActive(true);
-            videoPlayer.Play();
-        }
-
-        while (videoPlayer.isPlaying)
-        {
-            yield return new WaitForSeconds(0.1f);
-        }
-
+    public void SceneTranstion()
+    {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }

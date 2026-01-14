@@ -30,7 +30,7 @@ Se integraron los siguientes sistemas externos:
 ### 📌 Estado
 ✔ Prototipo completado
 
-![CrazyRappi_1](MD_Resources/CrazyRappi_1.png)
+![CrazyRappi_1](/Md_Resources/CrazyRappi_1.png)
 
 ---
 
@@ -64,4 +64,4 @@ External systems used:
 ### 📌 Status
 ✔ Completed prototype
 
-![CrazyRappi_2](MD_Resources/CrazyRappi_2.png)
+![CrazyRappi_2](/Md_Resources/CrazyRappi_2.png)
